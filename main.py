@@ -12,7 +12,7 @@ class Deck():
 
     def shuffle(self):
         print("Shuffling cards")
-        idx = random.randint(1, 53)
+        idx = random.randint(1, 52)
         card = self.cards[idx]
 
         del self.cards[idx]
