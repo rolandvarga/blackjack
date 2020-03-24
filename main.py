@@ -11,11 +11,8 @@ class Deck():
         self.cards = cards
 
     def shuffle(self):
-        print("Shuffling cards")
-
         for idx_a, _ in enumerate(self.cards):
             idx_b = random.randint(0, 51)
-
             self.cards[idx_a], self.cards[idx_b] = self.cards[idx_b], self.cards[idx_a]
 
     def get_cards(self):
