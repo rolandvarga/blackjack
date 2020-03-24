@@ -12,11 +12,17 @@ class Deck():
 
     def shuffle(self):
         print("Shuffling cards")
-        idx = random.randint(1, 52)
-        card = self.cards[idx]
 
-        del self.cards[idx]
-        self.cards.append(card)
+        for idx_a, _ in enumerate(self.cards):
+            idx_b = random.randint(0, 51)
+
+            self.cards[idx_a], self.cards[idx_b] = self.cards[idx_b], self.cards[idx_a]
+
+    def get_cards(self):
+        return ["{} of {}".format(c.rank, c.suit) for c in self.cards]
+
+    def get_card_values(self):
+        return [c.value for c in self.cards]
 
 class Card():
     def __init__(self, value, rank, suit):
@@ -36,14 +42,10 @@ def main():
         for count, rank in enumerate(RANKS, 1):
             cards.append(Card(count, rank, suit))
     
-    print(len(cards))
-    print(cards[-1].to_string())
-
     deck = Deck(cards)
     deck.shuffle()
 
-    print(len(cards))
-    print(cards[-1].to_string())
+    print(deck.get_cards())
 
 
 if __name__ == "__main__":
