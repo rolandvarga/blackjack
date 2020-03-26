@@ -18,6 +18,9 @@ class Deck():
             self.cards[idx_a], self.cards[idx_b] = self.cards[idx_b], self.cards[idx_a]
 
     def get_cards(self):
+        return self.cards
+
+    def get_cards_string(self):
         return [c.to_string() for c in self.cards]
 
     def get_card_values(self):
