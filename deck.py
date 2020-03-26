@@ -3,11 +3,13 @@ import random
 from card import Card
 
 SUITS = ["Spades", "Hearts", "Diamonds", "Clubs"]
-RANKS = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+RANKS = ["Ace", "Two", "Three", "Four", "Five", "Six",
+         "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
 
 class Deck():
     """
     This class represents a generic deck of cards.
+    Should be sub-classed for specific games.
     """
     def __init__(self, cards):
         self.cards = cards
@@ -27,6 +29,9 @@ class Deck():
         return [c.value for c in self.cards]
 
 def new_deck():
+    """
+    Initializes a new Deck() instance.
+    """
     cards = []
     for _, suit in enumerate(SUITS):
         for count, rank in enumerate(RANKS, 1):

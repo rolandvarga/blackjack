@@ -16,4 +16,7 @@ class Hand():
         self.cards.append(card)
 
 def new_hand(cards):
+    """
+    Initializes a new Hand() instance.
+    """
     return Hand(cards)
