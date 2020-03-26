@@ -13,11 +13,27 @@ class Deck():
     """
     def __init__(self, cards):
         self.cards = cards
+        self.dealt_index = 0 # first un-dealt card
 
     def shuffle(self):
         for idx_a, _ in enumerate(self.cards):
             idx_b = random.randint(0, 51)
             self.cards[idx_a], self.cards[idx_b] = self.cards[idx_b], self.cards[idx_a]
+
+    def deal_card(self):
+        if self.remaining_cards() > 0:
+            card = self.cards[self.dealt_index]
+            self.dealt_index += 1
+            return card
+
+    def deal_hand(self, size):
+        hand = []
+        for _ in range(size):
+            hand.append(self.deal_card())
+        return hand
+
+    def remaining_cards(self):
+        return len(self.cards) - self.dealt_index
 
     def get_cards(self):
         return self.cards
