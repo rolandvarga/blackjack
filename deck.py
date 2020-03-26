@@ -1,6 +1,6 @@
 import random
 
-from card import Card
+from card import Card, new_card
 
 SUITS = ["Spades", "Hearts", "Diamonds", "Clubs"]
 RANKS = ["Ace", "Two", "Three", "Four", "Five", "Six",
@@ -35,7 +35,7 @@ def new_deck():
     cards = []
     for _, suit in enumerate(SUITS):
         for count, rank in enumerate(RANKS, 1):
-            cards.append(Card(count, rank, suit))
+            cards.append(new_card(count, rank, suit))
     
     deck = Deck(cards)
     deck.shuffle()

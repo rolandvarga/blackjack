@@ -19,4 +19,7 @@ class Card():
         self.available = True
 
     def to_string(self):
-        return "{} {} of {}".format(self.value, self.rank, self.suit)
+        return "|{}| {} of {}".format(self.value, self.rank, self.suit)
+
+def new_card(value, rank, suit):
+    return Card(value, rank, suit)
