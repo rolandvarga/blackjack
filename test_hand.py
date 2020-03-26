@@ -1,8 +1,8 @@
 import unittest
 
-from deck import Deck, new_deck
+from deck import new_deck
 from card import Card
-from hand import Hand, new_hand
+from hand import new_hand
 
 class TestHand(unittest.TestCase):
     def test_total_score_ok(self):

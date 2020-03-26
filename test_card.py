@@ -1,8 +1,6 @@
 import unittest
 
-from deck import Deck, new_deck
-from card import Card, new_card
-from hand import Hand, new_hand
+from card import new_card
 
 class TestCard(unittest.TestCase):
     def test_is_available_init(self):
