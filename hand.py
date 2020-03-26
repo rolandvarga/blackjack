@@ -1,4 +1,8 @@
 class Hand():
+    """
+    This class represents a generic hand of card(s).
+    Should be sub-classed for specific games.
+    """
     def __init__(self, cards):
         self.cards = cards
 

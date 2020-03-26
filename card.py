@@ -1,4 +1,8 @@
 class Card():
+    """
+    This is the class representation of a Card.
+    Should be sub-classed for specific games.
+    """
     def __init__(self, value, rank, suit):
         self.value = value
         self.rank = rank
@@ -15,7 +19,4 @@ class Card():
         self.available = True
 
     def to_string(self):
-        """
-        Returns a string representing the current Card.
-        """
         return "{} {} of {}".format(self.value, self.rank, self.suit)

@@ -7,7 +7,7 @@ RANKS = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
 
 class Deck():
     """
-    This class represents a deck of cards.
+    This class represents a generic deck of cards.
     """
     def __init__(self, cards):
         self.cards = cards
