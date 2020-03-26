@@ -1,6 +1,7 @@
 import unittest
 
 from deck import Deck, new_deck
+from card import Card
 from hand import Hand, new_hand
 
 class TestHand(unittest.TestCase):
@@ -10,6 +11,14 @@ class TestHand(unittest.TestCase):
 
         # total value for a deck with 52 cards == 364
         self.assertEqual(hand.get_score(), 364, "Score should be 364")
+
+    def test_add_card(self):
+        cards = [Card(1, "Ace", "Spades"), Card(13, "King", "Hearts")]
+        hand = new_hand(cards)
+        hand.add_card(Card(11, "Jack", "Diamonds"))
+
+        self.assertEqual(len(hand.cards), 3, "Should be 3 cards")
+
 
 if __name__ == '__main__':
     unittest.main()
