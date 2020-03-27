@@ -17,6 +17,9 @@ class Card():
     
     def mark_available(self):
         self.available = True
+    
+    def show_card(self):
+        return "{} of {}".format(self.rank, self.suit)
 
     def to_string(self):
         return "|{}| {} of {}".format(self.value, self.rank, self.suit)
