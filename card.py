@@ -8,16 +8,16 @@ class Card():
         self.rank = rank
         self.suit = suit
         self.available = True
-    
+
     def is_available(self):
         return self.available
-    
+
     def mark_unavailable(self):
         self.available = False
-    
+
     def mark_available(self):
         self.available = True
-    
+
     def show_card(self):
         return "{} of {}".format(self.rank, self.suit)
 
