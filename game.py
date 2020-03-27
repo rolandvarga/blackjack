@@ -15,15 +15,15 @@ class Game():
         self.player_hand = new_hand([])
         self.dealer_hand = new_hand([])
 
+        self.winner = "Nobody"
+
         for _ in range(2):
             self.player_hand.add_card(self.deck.deal_card())
             self.dealer_hand.add_card(self.deck.deal_card())
 
         player = True
         while player:
-            print()
-            print("Your Hand: {} => {}".format(self.player_hand.get_score(), self.player_hand.show_hand()))
-            print("Dealer's Hand: {} => {}".format(self.dealer_hand.get_score(), self.dealer_hand.show_hand()))
+            self.print_hands()
             if self.player_blackjack():
                 print("Player has Blackjack!")
                 player = False
@@ -44,9 +44,9 @@ class Game():
                 self.player_hand.add_card(self.deck.deal_card())
 
         dealer = True
+        print("Dealer's turn.")
         while dealer:
-            print()
-            print("Dealer's turn.")
+            self.print_hands()
             if self.dealer_blackjack():
                 print("Dealer has Blackjack!")
                 dealer = False
@@ -57,20 +57,31 @@ class Game():
 
             if self.dealer_hand.get_score() < 21:
                 self.dealer_hand.add_card(self.deck.deal_card())
-        
-        if self.player_blackjack() & self.dealer_blackjack():
-            self.winner = "Both"
-        
-        if self.player_bust() != True & self.dealer_bust() != True:
-            if self.player_hand.get_score() > self.dealer_hand.get_score():
-                self.winner = "Player"
-            elif self.player_hand.get_score() < self.dealer_hand.get_score():
-                self.winner = "Dealer"
-            else:
-                self.winner = "Both"
 
-        
-        print("The winner is: {}".format(self.winner))
+        if self.player_blackjack() and self.dealer_blackjack():
+            self.winner = "Both"
+            self.announce_winner()
+
+        if self.player_bust() and self.dealer_bust():
+            self.winner = "Nobody"
+            self.announce_winner()
+
+        if self.player_bust() != True and self.dealer_bust():
+            self.winner = "Player"
+            self.announce_winner()
+        if self.dealer_bust() != True and self.player_bust():
+            self.winner = "Dealer"
+            self.announce_winner()
+
+        if self.player_hand.get_score() > self.dealer_hand.get_score() and self.player_hand.get_score() <= 21:
+            self.winner = "Player"
+            self.announce_winner()
+        elif self.player_hand.get_score() < self.dealer_hand.get_score() and self.dealer_hand.get_score() <= 21:
+            self.winner = "Dealer"
+            self.announce_winner()
+        else:
+            self.winner = "Both"
+            self.announce_winner()
 
     def player_blackjack(self):
         return self.player_hand.get_score() == 21
@@ -83,6 +94,15 @@ class Game():
 
     def dealer_bust(self):
         return self.dealer_hand.get_score() > 21
+
+    def print_hands(self):
+        print()
+        print("Your Hand: {} => {}".format(self.player_hand.get_score(), self.player_hand.show_hand()))
+        print("Dealer's Hand: {} => {}".format(self.dealer_hand.get_score(), self.dealer_hand.show_hand()))
+
+    def announce_winner(self):
+        print("The winner is: {}".format(self.winner))
+        exit(0)
 
 def new_game():
     return Game()
