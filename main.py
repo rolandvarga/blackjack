@@ -1,8 +1,9 @@
-from deck import new_deck
+from game import new_game
 
 def main():
-    deck = new_deck()
-    print(deck.get_cards_string())
+    game = new_game()
+    game.play()
+
 
 if __name__ == "__main__":
     main()
